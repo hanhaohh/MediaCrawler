@@ -9,6 +9,23 @@ from db import AsyncMysqlDB
 from var import media_crawler_db_var
 
 
+async def query_tacking_items(type: str) -> Dict:
+    """
+    查询一个user_id下面的tracking items.
+    Args:
+        user_id: 123
+
+    Returns:
+
+    """
+    async_db: AsyncMysqlDB = media_crawler_db_var.get()
+    sql: str = f"select item_id from user_tracking where item_type = '{type}';"
+    rows: List[Dict] = await async_db.query(sql)
+    if len(rows) > 0:
+        return rows
+    return dict()
+
+
 async def query_content_by_content_id(content_id: str) -> Dict:
     """
     查询一条内容记录（xhs的帖子 ｜ 抖音的视频 ｜ 微博 ｜ 快手视频 ...）

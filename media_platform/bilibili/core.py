@@ -40,7 +40,8 @@ class BilibiliCrawler(AbstractCrawler):
             ip_proxy_pool = await create_ip_pool(config.IP_PROXY_POOL_COUNT, enable_validate_ip=True)
             ip_proxy_info: IpInfoModel = await ip_proxy_pool.get_proxy()
             playwright_proxy_format, httpx_proxy_format = self.format_proxy_info(
-                ip_proxy_info)
+                ip_proxy_info
+            )
 
         async with async_playwright() as playwright:
             # Launch a browser context.

@@ -159,7 +159,11 @@ class XhsDbStoreImplement(AbstractStore):
             await add_new_creator(creator)
         else:
             await update_creator_by_user_id(user_id, creator)
-
+            
+    async def get_tracking(self):
+        from .xhs_store_sql import query_post_to_track
+        user_detail: Dict = await query_post_to_track(123)
+        return user_detail
 
 class XhsJsonStoreImplement(AbstractStore):
     json_store_path: str = "data/xhs/json"

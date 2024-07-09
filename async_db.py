@@ -27,12 +27,13 @@ class AsyncMysqlDB:
     async def get_first(self, sql: str, *args: Union[str, int]) -> Union[Dict[str, Any], None]:
         """
         从给定的 SQL 中查询记录，返回的是符合条件的第一个结果
-        :param sql: 查询的sql
+        :param sql: 查询的sqlh
         :param args:sql中传递动态参数列表
         :return:
         """
         async with self.__pool.acquire() as conn:
             async with conn.cursor(aiomysql.DictCursor) as cur:
+                print(sql)
                 await cur.execute(sql, args)
                 data = await cur.fetchone()
                 return data

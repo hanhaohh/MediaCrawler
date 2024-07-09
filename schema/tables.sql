@@ -274,6 +274,7 @@ CREATE TABLE `xhs_note` (
   `image_list` longtext COMMENT '笔记封面图片列表',
   `tag_list` longtext COMMENT '标签列表',
   `note_url` varchar(255) DEFAULT NULL COMMENT '笔记详情页的URL',
+  `keyword` varchar(255) DEFAULT NULL COMMENT '笔记关键词',
   PRIMARY KEY (`id`),
   KEY `idx_xhs_note_note_id_209457` (`note_id`),
   KEY `idx_xhs_note_time_eaa910` (`time`)

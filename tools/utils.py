@@ -4,10 +4,10 @@ import logging
 from .crawler_util import *
 from .slider_util import *
 from .time_util import *
-
+from config.base_config import LOG_LEVEL
 
 def init_loging_config():
-    level = logging.INFO
+    level = LOG_LEVEL
     logging.basicConfig(
         level=level,
         format="%(asctime)s [%(threadName)s] %(name)s %(levelname)s (%(filename)s:%(lineno)d) - %(message)s",
